@@ -7,10 +7,10 @@ Botphobic is an antibot extension for [FluxBB](https://github.com/fluxbb/fluxbb)
 
 Botphobic implements 4 different techniques that are all individually activable and non intrusive :
 
-* _Encrypted timestamp_ will check that 4 seconds to 2 hours have elapsed during the form filling.
-* _Honeypot_ ensures that some hidden inputs will not be filled.
-* _Javascript_ checks that Javascript is activated on the browser side.
-* _Cookies_ checks that the user's browser allows cookies.
+* **_Encrypted timestamp_** will check that 4 seconds to 2 hours have elapsed during the form filling.
+* **_Honeypot_** ensures that some hidden inputs will not be filled.
+* **_Javascript_** checks that Javascript is activated on the browser side.
+* **_Cookies_** checks that the user's browser allows cookies.
 
 ## Requirements
 
