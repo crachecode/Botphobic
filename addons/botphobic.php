@@ -29,9 +29,10 @@ class addon_botphobic extends flux_addon
 	function hook_register_after_validation()
 	{
 		global $errors;
+		global $pun_config;
 		if (!$this->bp_verify())
 		{
-			$errors[] = 'Sorry, there was an error. Please try with a different browser.';
+			$errors[] = $pun_config['botphobic_message'];
 		}
 	}
 	function hook_register_before_submit()
@@ -71,7 +72,7 @@ class addon_botphobic extends flux_addon
 		if (isset($pun_config['botphobic_cookies']) && $pun_config['botphobic_cookies'])
 		{
 			$bp_salted = hash('md5', substr($pun_config['botphobic_salt'],0,12));
-			setcookie('ghi', $bp_salted, time() + (3600 * 12), "/");
+			setcookie('ghi', $bp_salted, time() + (2 * 3600), "/");
 		}
 		?>
 

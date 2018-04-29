@@ -35,8 +35,9 @@ if (isset($_POST['process_form']))
 	$botphobic_honeypot = isset($_POST['botphobic_honeypot']);
 	$botphobic_javascript = isset($_POST['botphobic_javascript']);
 	$botphobic_cookies = isset($_POST['botphobic_cookies']);
+	$botphobic_message = isset($_POST['botphobic_message']) ? pun_trim($_POST['botphobic_message']) : 'Sorry, there was an error. Please try with a different browser.';
 
-	foreach (compact('botphobic_salt', 'botphobic_timestamp', 'botphobic_honeypot', 'botphobic_javascript', 'botphobic_cookies') as $key => $value)
+	foreach (compact('botphobic_salt', 'botphobic_timestamp', 'botphobic_honeypot', 'botphobic_javascript', 'botphobic_cookies', 'botphobic_message') as $key => $value)
 	{
 		if (isset($pun_config[$key]))
 			$db->query('UPDATE '.$db->prefix.'config SET conf_value = \''.$db->escape($value).'\' WHERE conf_name = \''.$db->escape($key).'\'') or error('Unable to update config value for '.$key, __FILE__, __LINE__, $db->error());
@@ -60,7 +61,7 @@ generate_admin_menu($plugin);
 		<form id="recaptcha" method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>">
 			<div class="inform">
 				<fieldset>
-					<legend>Configure Botphobic</legend>
+					<legend>Tests</legend>
 					<div class="infldset">
 						<table class="aligntop" cellspacing="0">
 							<tr>
@@ -90,6 +91,20 @@ generate_admin_menu($plugin);
 						</table>
 					</div>
 				</fieldset>
+				<fieldset>
+					<legend>Options</legend>
+					<div class="infldset">
+						<table class="aligntop" cellspacing="0">
+							<tr>
+								<th scope="row">Error message</th>
+								<td>
+									<textarea name="botphobic_message" cols="60" rows="3"><?php
+										if (isset($pun_config['botphobic_message']) && $pun_config['botphobic_message']) echo $pun_config['botphobic_message'];
+										else { ?>Sorry, there was an error. Please try with a different browser.<?php } ?></textarea>
+								</td>
+							</tr>
+						</table>
+					</div>
 			</div>
 			<p class="submitend"><input type="submit" name="process_form" value="Save" /></p>
 		</form>

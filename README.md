@@ -5,7 +5,7 @@ Botphobic is an antibot extension for [FluxBB](https://github.com/fluxbb/fluxbb)
 
 ## Features
 
-Botphobic implements 4 different techniques that are all individually activable and non intrusive :
+Botphobic implements 4 different tests that are all individually activable and non intrusive :
 
 * **_Encrypted timestamp_** will check that 4 seconds to 2 hours have elapsed during the form filling.
 * **_Honeypot_** ensures that some hidden inputs will not be filled.
@@ -14,7 +14,7 @@ Botphobic implements 4 different techniques that are all individually activable 
 
 ## Requirements
 
-_Encrypted timestamp_ functionality requires OpenSSL installed on the server.
+_Encrypted timestamp_ test requires OpenSSL installed on the server.
 
 Botphobic has been tested on FluxBB 1.5.10 with PHP 5.5 and PHP 7.0.
 
@@ -24,4 +24,6 @@ Just copy the two files from _plugins_ and _addons_ in the same directories in y
 
 ## Usage
 
-Simply activate the functionalities you want to use in FluxBB administration panel : _Plugins menu_ -> _Botphobic_.
+Simply activate the tests you want to perform in FluxBB administration panel : _Plugins menu_ -> _Botphobic_.
+
+Here you can also write a custom error message.
