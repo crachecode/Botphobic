@@ -38,25 +38,21 @@ class addon_botphobic extends flux_addon
 	function hook_register_before_submit()
 	{
 		global $pun_config;
-		?>
 
-		<?php
 		if (isset($pun_config['botphobic_timestamp']) && $pun_config['botphobic_timestamp'])
 		{
 			$bp_salted = openssl_encrypt(time(), 'aes-256-cbc', $pun_config['botphobic_salt'], 0, substr(hash('md5', $pun_config['botphobic_salt']),0,16));
 		?>
 			<input type="hidden" name="abc" value="<?php echo $bp_salted ?>">
-		<?php } ?>
+		<?php } 
 
-		<?php
 		if (isset($pun_config['botphobic_honeypot']) && $pun_config['botphobic_honeypot'])
 		{
 			?>
 			<input type="text" name="contact" value="" style="position:fixed !important;left:9000px !important;" tabindex="-1" autocomplete="nope">
 			<textarea name="comment" style="display:none !important;" tabindex="-1" autocomplete="nope"></textarea>
-		<?php } ?>
+		<?php }
 
-		<?php
 		if (isset($pun_config['botphobic_javascript']) && $pun_config['botphobic_javascript'])
 		{
 			$bp_salted = hash('md5', substr($pun_config['botphobic_salt'],0,8));
@@ -66,17 +62,13 @@ class addon_botphobic extends flux_addon
 				var test_js = document.getElementById("test_js");
 				test_js.value = "<?php echo $bp_salted ?>";
 			</script>
-		<?php } ?>
+		<?php }
 
-		<?php
 		if (isset($pun_config['botphobic_cookies']) && $pun_config['botphobic_cookies'])
 		{
 			$bp_salted = hash('md5', substr($pun_config['botphobic_salt'],0,12));
 			setcookie('ghi', $bp_salted, time() + (2 * 3600), "/");
 		}
-		?>
-
-		<?php
 	}
 	function bp_verify()
 	{
