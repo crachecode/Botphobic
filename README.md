@@ -3,7 +3,7 @@ Botphobic
 
 Botphobic is an antibot extension for [FluxBB](https://github.com/fluxbb/fluxbb) register form.
 
-![image](https://www.crachecode.net/botphobic/screenshot.png)
+![image](https://img.crachecode.net/botphobic.png)
 
 ## Features
 
